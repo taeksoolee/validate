@@ -1,0 +1,113 @@
+:root {
+  --primary-color: green;
+  --text-color: slategray;
+  --border-color: lightgray;
+  
+  --error-color: red;
+  --error-bg-color: lightpink;
+
+  --font-size: 14px;
+  --font-sm-size: 12px;
+
+  --spacing: 10px;
+  --round: 4px;
+}
+
+body {
+  color: var(--text-color);
+  font-size: var(--font-size);
+}
+
+h1 {
+  font-size: 20px;
+  color: black
+}
+
+form>div {
+  --form-gutter: calc(var(--spacing) * 2);
+  margin-top: var(--form-gutter);
+  margin-bottom: var(--form-gutter);
+}
+
+label {
+  width: 100%;
+}
+
+label>span {
+  display: inline-block;
+  margin-bottom: calc(var(--spacing) / 5);
+}
+
+
+label:has(input[required])::before {
+  content: "*";
+  color: var(--error-color);
+}
+
+input {
+  padding: var(--spacing);
+  border-radius: var(--round);
+  border: 1px solid var(--border-color);
+  outline: none;
+  color: var(--text-color);
+  width: calc(100% - (var(--spacing) * 2));
+}
+input:focus {
+  outline: 1px solid var(--primary-color);
+}
+
+input[aria-invalid=true] {
+  border: 1px solid var(--error-color);
+}
+
+input[aria-invalid=true]:focus {
+  outline: 1px solid var(--error-color);
+}
+
+input::placeholder {
+  color: lightgray;
+}
+
+form *[role=alert] {
+  color: var(--error-color);
+  margin-top: calc(var(--spacing) / 2.5);
+  font-size: var(--font-sm-size);
+}
+
+
+button[type=submit] {
+  padding: var(--spacing);
+  /* color: var(--border-color); */
+  color: white;
+  border: 1px solid var(--primary-color);
+  background-color: var(--primary-color);
+  border-radius: var(--round);
+}
+
+
+dialog {
+  border: none;
+
+  /* border: 1px solid var(--border-color); */
+  border-radius: var(--round);
+
+  padding: calc(var(--spacing) * 2);
+  outline: none;
+}
+
+dialog::backdrop {
+  background-color: var(--border-color);
+  opacity: .5;
+}
+
+.alert {
+  color: var(--error-color);
+  background-color: var(--error-bg-color);
+  padding: 10px;
+  border-radius: var(--round);
+  font-size: var(--font-sm-size);
+}
+
+.alert[aria-hidden=true] {
+  display: none;
+}
